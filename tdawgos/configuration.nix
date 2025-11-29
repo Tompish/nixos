@@ -33,6 +33,9 @@
 		(_: _: {
 		 niri = inputs.niri-flake.packages.${system}.niri.overrideAttrs (_: {doCheck = false;});
 		 })
+		 (_: prev: {
+			sddm-astronaut = prev.sddm-astronaut.override { embeddedTheme = "hyprland_kath"; };
+		 })
 	];
 # Configure network proxy if necessary
 # networking.proxy.default = "http://user:password@proxy:port/";
