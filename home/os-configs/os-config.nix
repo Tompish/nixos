@@ -16,6 +16,8 @@
 		sha256 = "sha256-XpItMGsYq4XvLT+7OJ9YRILfd/9RG1GMuO6J4hSGepg=";
 	} + "/themes";
 
+	home.file."/.config/niri".source = builtins.readFile ./niri/config.kdl;
+
 
 	programs.fuzzel = {
 		enable = true;
