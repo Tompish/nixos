@@ -23,35 +23,27 @@
 		};
 	};
 	in {
-# NixOS configuration entrypoint
-# Available through 'nixos-rebuild --flake .#your-hostname'
 		nixosConfigurations = {
 			tdawgos = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit system inputs; };
-# > Our main nixos configuration file <
 				modules = [
 					./tdawgos/configuration.nix
-						inputs.niri-flake.nixosModules.niri
-						#home-manager.nixosModules.home-manager
-						#{
-          				#  home-manager.useGlobalPkgs = true;
-          				#  home-manager.useUserPackages = true;
-          				#  home-manager.users.tdawg = ./tdawgos/config/configfilemanager.nix;
-          				#}
+					inputs.niri-flake.nixosModules.niri
 				];
 			};
 		};
 
-		#I want to have two separate home managers, one for handling the OS specific config files,
-		#such as compositor, displaymanager etc, and one home manager for 
-		#developer tools configs, so that it's portable regardless of OS (for work)
 		homeConfigurations = {
 			tdawg = home-manager.lib.homeManagerConfiguration {
 				pkgs = pkgs;#"${system}"; # FIXME replace x86_64-linux with your architecure 
 				extraSpecialArgs = {inherit inputs;};
 				modules = [
-					./home/home.nix
-					./home/os_specific.nix
+					#All config files and most programs for my dev environment
+					./home/develop/develop.nix
+					#config files for OS related stuff, like Niri, waybar etc.
+					./home/os-configs/os-config.nix
+					#Programs for entertainment, like steam, discord etc
+					./home/fun-n-games/fun-n-games.nix
 				];
 			};
 		};

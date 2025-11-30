@@ -8,7 +8,6 @@
 	imports =
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
-			./waybar/config.nix
 		];
 
 #Allow unfree for discord and steam
@@ -65,14 +64,8 @@
 	programs.niri = {
 		enable = true;
 	};
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-	};
 
 	programs.steam.enable = true;
-# Enable CUPS to print documents.
-# services.printing.enable = true;
 
 # Enable sound.
 # services.pulseaudio.enable = true;
@@ -85,21 +78,15 @@
 # Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.tdawg = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-			shell = pkgs.zsh;
 	};
-
-	programs.zsh.enable = true;
 
 	environment.systemPackages = with pkgs; [
 		vim 
 			wget
 			kitty
-			git
-			ripgrep
 
 			home-manager
 

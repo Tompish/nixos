@@ -30,8 +30,8 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
+	git
+
     neofetch
 
     # archives
@@ -76,7 +76,6 @@
   programs.starship = {
     enable = true;
 	preset = "pastel-powerline";
-	#presets = [ "pastel-powerline" ];
   };
 
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
@@ -93,15 +92,18 @@
 	shellAliases = {
 		ls = "eza";
 		cat = "bat";
-		pucko = "echo 'attans'";
 	};
-
 	envExtra = ''
 		if [ "$TMUX" = "" ]; then tmux; fi
 		#emacs keybinds
 		bindkey -e
 		neofetch
 	'';
+  };
+
+  programs.neovim = {
+	  enable = true;
+	  defaultEditor = true;
   };
 
   programs.tmux = {
