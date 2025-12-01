@@ -66,6 +66,7 @@
 	};
 
 	programs.steam.enable = true;
+	programs.zsh.enable = true;
 
 # Enable sound.
 # services.pulseaudio.enable = true;
@@ -81,6 +82,7 @@
 	users.users.tdawg = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+		shell = pkgs.zsh;
 	};
 
 	environment.systemPackages = with pkgs; [
