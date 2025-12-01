@@ -299,11 +299,25 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
-    // off
+	window-open {
+		duration-ms 500
+		curve "linear"
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+		custom-shader r"
+		vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+    	vec4 color = texture2D(niri_tex, coords_tex.st);
+
+    	vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
+    	coords = coords / length(size_geo.xy);
+    	float p = niri_clamped_progress;
+    	if (p * p <= dot(coords, coords))
+    	    color = vec4(0.0);
+
+    return color;
+}
+		"
+	}
 }
 
 // Window rules let you adjust behavior for individual windows.

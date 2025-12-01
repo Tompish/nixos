@@ -33,7 +33,7 @@
 		 niri = inputs.niri-flake.packages.${system}.niri.overrideAttrs (_: {doCheck = false;});
 		 })
 		 (_: prev: {
-			sddm-astronaut = prev.sddm-astronaut.override { embeddedTheme = "hyprland_kath"; };
+			sddm-astronaut = prev.sddm-astronaut.override { embeddedTheme = "cyberpunk"; };
 		 })
 	];
 # Configure network proxy if necessary
