@@ -304,20 +304,80 @@ animations {
 		curve "linear"
 
 		custom-shader r"
+		vec4 createnoise(vec4 v){
+	    // ensure reasonable range
+	    v = fract(v) + fract(v*1e4) + fract(v*1e-4);
+	    // seed
+	    v += vec4(0.12345, 0.6789, 0.314159, 0.271828);
+	    // more iterations => more random
+	    v = fract(v*dot(v, v)*123.456);
+	    v = fract(v*dot(v, v)*123.456);
+	    return v;
+		}
+
 		vec4 open_color(vec3 coords_geo, vec3 size_geo) {
 		vec3 coords_tex = niri_geo_to_tex * coords_geo;
     	vec4 color = texture2D(niri_tex, coords_tex.st);
 
-    	vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-    	coords = coords / length(size_geo.xy);
-    	float p = niri_clamped_progress;
-    	if (p * p <= dot(coords, coords))
-    	    color = vec4(0.0);
+		vec4 noise = createnoise(vec4(coords_geo.xy, niri_progress, 0.0));
 
-    return color;
-}
+		vec3 colors = max(vec3(noise.xyz)-niri_clamped_progress, color.xyz);
+		float transparency = min(noise.w+niri_clamped_progress, 1.0);
+
+		//transparency *= step(0.0, coords_geo.x-1.0);
+		//transparency *= step(0.0, coords_geo.y-1.0);
+		if(coords_geo.x < 0.0 || coords_geo.x > 1.0) {
+			return vec4(0.0);
+		}
+		if(coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+			return vec4(0.0);
+		}
+
+    	
+    	return vec4(colors.xyz, transparency);
+		}
 		"
 	}
+	window-close {
+		duration-ms 500
+		curve "linear"
+
+		custom-shader r"
+		vec4 createnoise(vec4 v){
+	    // ensure reasonable range
+	    v = fract(v) + fract(v*1e4) + fract(v*1e-4);
+	    // seed
+	    v += vec4(0.12345, 0.6789, 0.314159, 0.271828);
+	    // more iterations => more random
+	    v = fract(v*dot(v, v)*123.456);
+	    v = fract(v*dot(v, v)*123.456);
+	    return v;
+		}
+
+		vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+    	vec4 color = texture2D(niri_tex, coords_tex.st);
+
+		vec4 noise = createnoise(vec4(coords_geo.xy, niri_progress, 0.0));
+
+		vec3 colors = min(vec3(noise.xyz)-niri_clamped_progress, color.xyz);
+		float transparency = max(noise.w-niri_clamped_progress, 0.0);
+
+		if(coords_geo.x < 0.0 || coords_geo.x > 1.0) {
+			return vec4(0.0);
+		}
+		if(coords_geo.y < 0.0 || coords_geo.y > 1.0) {
+			return vec4(0.0);
+		}
+
+    	
+    	return vec4(colors.xyz, transparency);
+		}
+		"
+	}
+	workspace-switch {
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
