@@ -173,7 +173,7 @@ layout {
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#F55353"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -182,7 +182,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#A8561D" to="#F55353" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -384,16 +384,6 @@ animations {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -405,6 +395,9 @@ window-rule {
 
 window-rule {
     draw-border-with-background false
+
+    geometry-corner-radius 12
+    clip-to-geometry true
 }
 
 // Example: block out two password managers from screen capture.
@@ -417,13 +410,6 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
 }
 
 binds {

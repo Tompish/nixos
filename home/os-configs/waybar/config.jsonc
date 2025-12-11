@@ -8,7 +8,7 @@
   "gtk-layer-shell": true,
   /* === Modules Order === */
   "modules-left": [
-    "custom/archicon",
+    "custom/nixicon",
     "clock",
     "cpu",
     "memory",
@@ -27,9 +27,9 @@
     "niri/language"
   ],
   /* === Modules Left === */
-  "custom/archicon": {
-    "format": "",
-    "on-click": "wofi --show drun",
+  "custom/nixicon": {
+    "format": "󱄅",
+    "on-click": "fuzzel",
     "tooltip": false
   },
   "clock": {

@@ -33,6 +33,7 @@
 	git
 
     neofetch
+	cmatrix
 
     # archives
     zip
@@ -40,6 +41,8 @@
 
 	#LSPs
 	rust-analyzer
+	rustc
+	rustPlatform.rustLibSrc
 	lua-language-server
 
 	#General compilers
@@ -50,7 +53,6 @@
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     eza # A modern replacement for ‘ls’
-	tree
 	bat
   ];
 
@@ -92,6 +94,8 @@
 	shellAliases = {
 		ls = "eza";
 		cat = "bat";
+		cd = "z";
+		tree = "eza --tree";
 	};
 	envExtra = ''
 		if [ "$TMUX" = "" ]; then tmux; fi
@@ -139,6 +143,11 @@
 			  bind '"' split-window -v -c "#{pane_current_path}"
 			  bind '%' split-window -h -c "#{pane_current_path}"
 	  '';
+  };
+
+  programs.yazi = {
+	enable = true;
+	enableZshIntegration = true;
   };
 
   # This value determines the home Manager release that your
