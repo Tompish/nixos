@@ -102,6 +102,7 @@
 		#emacs keybinds
 		bindkey -e
 		neofetch
+		source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 	'';
   };
 
