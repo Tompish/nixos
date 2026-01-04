@@ -67,6 +67,7 @@
 
 	programs.steam.enable = true;
 	programs.zsh.enable = true;
+	programs.nix-ld.enable = true;
 
 # Enable sound.
 # services.pulseaudio.enable = true;

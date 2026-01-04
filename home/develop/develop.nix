@@ -45,6 +45,9 @@
 	rustPlatform.rustLibSrc
 	lua-language-server
 
+	#CSharp
+	dotnet-sdk_10
+
 	#General compilers
 	gcc
 	cargo
