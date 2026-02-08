@@ -20,6 +20,11 @@
 
 	home.file."/.config/niri".source = ./niri;
 
+	home.file.".background.jpg".source = pkgs.fetchurl { 
+		url = "https://raw.githubusercontent.com/dharmx/walls/refs/heads/main/nord/a_video_game_screen_capture.jpg";
+		sha256 = "sha256-etZOyGFTD7GP2qLcY4mLT1jkklazXJyBElwzXG6pGp8=";
+	};
+
 
 	programs.fuzzel = {
 		enable = true;
