@@ -146,6 +146,10 @@
 	  extraConfig = ''
 			  bind '"' split-window -v -c "#{pane_current_path}"
 			  bind '%' split-window -h -c "#{pane_current_path}"
+			  bind-key h select-pane -L
+			  bind-key j select-pane -D
+			  bind-key k select-pane -U
+			  bind-key l select-pane -R
 	  '';
   };
 
