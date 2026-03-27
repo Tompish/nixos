@@ -399,6 +399,11 @@ window-rule {
 
     geometry-corner-radius 12
     clip-to-geometry true
+
+	opacity 0.85
+	background-effect {
+	 	blur true
+	 }
 }
 
 // Example: block out two password managers from screen capture.
