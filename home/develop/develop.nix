@@ -32,7 +32,7 @@
   home.packages = with pkgs; [
 	git
 
-    neofetch
+    fastfetch
 	cmatrix
 
     # archives
@@ -104,7 +104,7 @@
 		if [ "$TMUX" = "" ]; then tmux; fi
 		#emacs keybinds
 		bindkey -e
-		neofetch
+		fastfetch
 		source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 	'';
   };
