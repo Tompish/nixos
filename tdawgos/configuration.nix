@@ -29,9 +29,7 @@
 #When using niri flake, the rust unit test causes the nixos-build process to abort.
 #Hopefully I can remove this in the future
 	nixpkgs.overlays = [
-		(_: _: {
-		 niri = inputs.niri-flake.packages.${system}.niri.overrideAttrs (_: {doCheck = false;});
-		 })
+		inputs.niri-flake.overlays.niri
 		 (_: prev: {
 			sddm-astronaut = prev.sddm-astronaut.override { embeddedTheme = "cyberpunk"; };
 		 })
@@ -63,6 +61,8 @@
 
 	programs.niri = {
 		enable = true;
+		#package = inputs.niri.packages.${system}.niri-unstable;
+		package = pkgs.niri-unstable;
 	};
 
 	programs.steam.enable = true;
