@@ -88,7 +88,6 @@
     enable = true;
     # custom settings
     settings = {
-		background_opacity = 0.85;
       };
     };
 
