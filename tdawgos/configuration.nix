@@ -57,7 +57,27 @@
 		];
 	};
 
-	programs.firefox.enable = true;
+	programs.firefox = {
+		enable = true;
+		policies = {
+			ExtensionSettings = {
+				#vimium
+				"{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
+				install_url = "https://addons.mozilla.org/firefox/downloads/latest/{d7742d87-e61d-4b78-b8a1-b469842139fa}/latest.xpi";
+				installation_mode = "normal_installed";
+				};
+				#Grid lines theme
+				"{6264a8a7-6423-437c-8459-6f6c39526684}" = {
+				install_url = "https://addons.mozilla.org/firefox/downloads/latest/{6264a8a7-6423-437c-8459-6f6c39526684}/latest.xpi";
+				installation_mode = "normal_installed";
+				};
+			};
+		};
+		preferences = {
+			#Set dark mode
+			"browser.theme.content-theme" = 0;
+		};
+	};
 
 	programs.niri = {
 		enable = true;
@@ -72,7 +92,7 @@
 # Enable sound.
 # services.pulseaudio.enable = true;
 # OR
-hardware.pulseaudio.enable = false;
+#services.pulseaudio.enable = false;
  services.pipewire = {
    enable = true;
    pulse.enable = true;
