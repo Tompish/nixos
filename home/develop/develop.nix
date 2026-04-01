@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -34,6 +34,7 @@
 
     fastfetch
 	cmatrix
+	inputs.pokescript.packages.x86_64-linux.default
 
     # archives
     zip
@@ -103,7 +104,7 @@
 		if [ "$TMUX" = "" ]; then tmux; fi
 		#emacs keybinds
 		bindkey -e
-		fastfetch
+		pokescript -r 1-2
 		source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 	'';
   };

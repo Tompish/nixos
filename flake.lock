@@ -111,11 +111,32 @@
         "type": "github"
       }
     },
+    "pokescript": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774986885,
+        "narHash": "sha256-pWmpdHTBKfcQviXEVRMqXSTtfiSKo8EPq9ykx9UbJ3Y=",
+        "owner": "tompish",
+        "repo": "pokescript",
+        "rev": "d0eeee62045000ffaa0e00a1d22127b408c0d43c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tompish",
+        "repo": "pokescript",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "niri-flake": "niri-flake",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pokescript": "pokescript"
       }
     },
     "xwayland-satellite-stable": {

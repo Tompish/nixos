@@ -8,6 +8,9 @@
 		niri-flake.url = "github:sodiboo/niri-flake";
 		niri-flake.inputs.niri-unstable.url = "github:niri-wm/niri/d06dd4b9e60fa07120c217aa095f3ed8caac99f2";
 		niri-flake.inputs.nixpkgs.follows = "nixpkgs";
+
+		pokescript.url = "github:tompish/pokescript";
+		pokescript.inputs.nixpkgs.follows = "nixpkgs";
 # Home manager
 		home-manager.url = "github:nix-community/home-manager";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
