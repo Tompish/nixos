@@ -14,8 +14,8 @@
 	home.file."/.config/fuzzel/themes".source = pkgs.fetchFromGitHub {
 		owner = "catppuccin";
 		repo = "fuzzel";
-		rev = "main";
-		sha256 = "sha256-XpItMGsYq4XvLT+7OJ9YRILfd/9RG1GMuO6J4hSGepg=";
+		rev = "879879da8a7dc58f173b4cd7987723fd19bef6d5";
+		sha256 = "sha256-+/7lxQTRDZ0m+GAAFIjvFt8EXDeqZUtv0pLnNgaauZw=";
 	} + "/themes";
 
 	home.file."/.config/niri".source = ./niri;
