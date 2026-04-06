@@ -30,8 +30,18 @@
 		nixosConfigurations = {
 			tdawgos = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit system inputs; };
+
 				modules = [
-					./tdawgos/configuration.nix
+					./tdawgos/shared-config.nix
+					./tdawgos/desktop.nix
+					inputs.niri-flake.nixosModules.niri
+				];
+			};
+			tdawgoslap = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit system inputs; };
+				modules = [
+					./tdawgos/shared-config.nix
+					./tdawgos/laptop.nix
 					inputs.niri-flake.nixosModules.niri
 				];
 			};

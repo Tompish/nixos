@@ -5,11 +5,6 @@
 { config, lib, pkgs, system, inputs, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
-		];
-
 #Allow unfree for discord and steam
 	nixpkgs.config.allowUnfree = true;
 
@@ -165,4 +160,3 @@
 	system.stateVersion = "25.05";
 
 }
-

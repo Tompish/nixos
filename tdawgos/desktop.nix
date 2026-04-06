@@ -1,0 +1,6 @@
+{ ... }:
+{
+	imports = [
+		./desktop-hardware.nix
+	];
+}
